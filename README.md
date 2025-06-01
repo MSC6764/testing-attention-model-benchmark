@@ -1,16 +1,16 @@
-Testing Attention Model Benchmark
+__Testing Attention Model Benchmark__
 This project builds upon the work by Wouter Kool, Herke van Hoof, and Max Welling, as presented in their paper Attention, Learn to Solve Routing Problems!.
 
 The original code from their repository was adapted and extended for benchmarking and evaluating pretrained attention-based models on various routing problems.
 
-How to Evaluate Pretrained Models
+__How to Evaluate Pretrained Models__
 Generate Test Data
 Use the script generate_all_test_data.sh to generate data for TSP and VRP instances.
 
 Evaluate Pretrained Models
 Run evaluate_pretrained_models.py to validate the pretrained models as described in the original repository.
 
-Reproducing Paper Results
+__Reproducing Paper Results__
 To reproduce the results from the original paper and run evaluations on CMT benchmark instances:
 
 CMT Instance Integration

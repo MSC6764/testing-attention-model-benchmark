@@ -1,0 +1,65 @@
+## The Replacements described here have to be made use the attention models for calculating the cmt instances.
+## Copy those functions to the described part of the code.
+#--------------------------------------------------'''
+#### Use this function for the calculation within the CMT instances to ensure get the tours. Replace the original rollout function
+
+### This function is part of the train.py in the original repository
+
+# def rollout(model, dataset, opts):
+#     from pathlib import Path
+#     # Put in greedy evaluation mode!
+#     set_decode_type(model, opts.decode_strategy)
+#     model.eval()
+#     costs, log_likelihoods, tours = [], [], []
+#     def eval_model_bat(bat):
+#         with torch.no_grad():
+#             cost, ll, pi = model(move_to(bat, opts.device), return_pi=True)
+#             costs.append(cost.cpu())
+#             log_likelihoods.append(ll.cpu())
+#             tours.append(pi.cpu())
+#         return cost
+
+#     all_costs = torch.cat([
+#         eval_model_bat(bat)
+#         for bat
+#         in tqdm(DataLoader(dataset, batch_size=opts.eval_batch_size), disable=opts.no_progress_bar)
+#     ], 0)
+#     # Wenn gewünscht, Speichern der Outputs (nur für 1 Instanz!)
+#     if getattr(opts, "dump_outputs", None):
+#         Path(opts.dump_outputs).parent.mkdir(parents=True, exist_ok=True)
+#         with open(opts.dump_outputs, "wb") as f:
+#             pickle.dump({
+#                 "cost": torch.cat(costs, 0).tolist(),
+#                 "log_likelihood": torch.cat(log_likelihoods, 0).tolist(),
+#                 "pi": torch.cat(tours, 0).tolist()
+#             }, f)
+
+#     return all_costs
+# # #--------------------------------------------------'''
+
+#### This function is necessary to use cmt instances within the model.
+  
+### This function is part of the /problem/vrp/problem_vrp.py
+
+# #-----------------------------------------------------------------------------
+# # # Diese Funktion ist notwendig, um die Instanzen aus den CMT-Daten zu erstellen.
+# def make_instance(args):
+#     loc, demand, depot, capacity, *extra_args = args
+#     grid_size = 1.0  # Standardwert
+#     if len(extra_args) == 3:
+#         depot_types, customer_types, grid_size = extra_args
+
+#     loc = torch.tensor(loc, dtype=torch.float)
+#     demand = torch.tensor(demand, dtype=torch.float)
+#     depot = torch.tensor(depot, dtype=torch.float)
+
+#     return {
+#         'loc': loc / grid_size,               # [n, 2]
+#         'demand': demand,        # [n, 1]
+#         'depot': depot / grid_size,           # [2]
+#         'capacity': capacity
+#     }
+    
+#-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+

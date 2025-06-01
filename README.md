@@ -1,30 +1,35 @@
-# testing-attention-model-benchmark
+Testing Attention Model Benchmark
+This project builds upon the work by Wouter Kool, Herke van Hoof, and Max Welling, as presented in their paper Attention, Learn to Solve Routing Problems!.
 
-This code uses the work of Wouter Kool and Herke van Hoof and Max Welling in the paper Attention, Learn to Solve Routing Problems! available at https://github.com/wouterkool/attention-learn-to-route.
+The original code from their repository was adapted and extended for benchmarking and evaluating pretrained attention-based models on various routing problems.
 
-For general use the model use the provided link. The original code from this repository was used.
+How to Evaluate Pretrained Models
+Generate Test Data
+Use the script generate_all_test_data.sh to generate data for TSP and VRP instances.
 
-Steps for evaluting the pretrained models:
+Evaluate Pretrained Models
+Run evaluate_pretrained_models.py to validate the pretrained models as described in the original repository.
 
-For generation of the data for tsp and vrp the "generate_all_test_data.sh" can be used.
-Therefore, it is necessary to validate the pre-trained models as described in their repository.
-This can be done via the "evaluate_pretrained_models.py"
+Reproducing Paper Results
+To reproduce the results from the original paper and run evaluations on CMT benchmark instances:
 
-Steps to reproduce the results of the paper:
+CMT Instance Integration
+Use the problem instances located in data/cmt.
 
-For integration of the cmt instances the instances in the folder data/cmt can be used.
+Adapt Functions
+Apply the necessary modifications as described in the file changes_for_cmt_within_attention_model.txt.
 
-1. Adaption of the functions in the original code as described in "changes_for_cmt_within_attention_model.txt".
+Solve CMT Instances
+Run evaluate_pretrained_models_cmt_ready.py to solve CMT problems using the adapted model.
 
-2. Solving CMT instances with "evaluate_pretrained_models_cmt_ready.py".
+Plot Tours
+Use plot_cmt_tours_attention.py to visualize the generated tours.
 
-3. Plotting routes with plot_cmt_tours_attention.py
+Visualize Performance Gaps
+Open and run result_generalization.ipynb to visualize generalization gaps and model performance.
 
-4. Visualization of gaps with the "result_generalization.ipynb".
+OR-Tools Baseline
+To reproduce results using OR-Tools as a baseline solver, run or_tools_solver.py.
 
-
-Additional the "or_tools_solver.py" can be used to reproduce the results for OR-Tools.
-
-
-
+Feel free to contribute or raise issues if you encounter any problems!
 
